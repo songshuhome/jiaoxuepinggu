@@ -1,0 +1,86 @@
+html{
+    height:100%;
+}
+body{
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    /*background-image: url("../images/2.jpg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 0.875em;
+    font-weight: 600;
+    font-family: "Helvetica neue", Helvetica, Arial, sans-serif;
+    color:rgba(127,127,127,0.8) ;
+}
+hr{
+    height: 3px;
+    border-radius: 1px;
+    background-color:rgba(127,127,127,0.1);
+}
+button{
+    width: 77%;
+    height: 30px;
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    font:inherit;
+    color: rgba(127,127,127,0.8);
+    transition:all 1s;
+}
+
+#header-h3{
+
+}
+
+.login-box{
+    margin-top: 8%;
+}
+.my-input{
+    border: none;
+    height: 25px;
+    background-color: transparent;
+    font-size: medium;
+    color:rgba(127,127,127,0.8) ;
+}
+.my-input:focus{
+    outline: none;
+}
+.login-button{
+    /*margin-top: 45px;*/
+   text-align: center;
+}
+.footer-content{
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-weight: normal;
+    font-size: 0.875em;
+}
+#input-hr{
+    height: 5px;
+
+}
+@media screen and (max-width: 768px){
+    .login-box{
+        width:93%;
+        margin-top: 20%;
+    }
+    button{
+        width: 50%;
+        height: 30px;
+        background: black;
+        border: 1px solid grey;
+        border-radius: 15px;
+        outline: none;
+        cursor: pointer;
+        font:inherit;
+        transition:all 1s;
+        text-align: center;
+    }
+span{
+    color:white;
+}
+}
+

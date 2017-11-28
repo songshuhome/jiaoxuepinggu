@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	<!-- 这是默认配置信息 属性详见WrapperConnectionPoolDataSourceBase类 -->
+	<default-config>
+		<!-- 连接四大参数配置 -->
+		<property name="jdbcUrl">
+			jdbc:mysql://127.0.0.1:3306/jxau-sofeware?useServerPrepStmts=true&amp;cachePrepStmts=true&amp;rewriteBatchedStatements=true
+		</property>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+		<!-- 池参数配置 -->
+		<!-- 获取链接超时时间 毫秒 -->
+		<property name="checkoutTimeout">2000</property>
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement">2</property>
+		<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+		<property name="acquireRetryAttempts">5</property>
+		<!--初始化时获取连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize">2</property>
+		<property name="minPoolSize">1</property>
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize">5</property>
+		<!--最大空闲时间,300秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime">300</property>
+		<!--每600秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod">600</property>
+	</default-config>
+	<!-- 自定义池 new ComboPooledDataSource("mysql") -->
+	<named-config name="mysql">
+		<property name="jdbcUrl">
+			jdbc:mysql://127.0.0.1:3306/jxau-sofeware
+		</property>
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="user">root</property>
+		<property name="password">root</property>
+	</named-config>
+</c3p0-config>
