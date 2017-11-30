@@ -50,7 +50,7 @@ public class UserServlet extends BaseServlet {
 		logger.setLevel(Level.WARNING); 
 		FileHandler fileHandler;
 		try {
-			fileHandler = new FileHandler("C:/testlog%g.log");
+			fileHandler = new FileHandler("D:/testDebug (2).log");
 			logger.addHandler(fileHandler);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
