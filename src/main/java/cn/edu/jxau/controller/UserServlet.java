@@ -7,12 +7,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -27,6 +31,7 @@ import cn.edu.jxau.utils.CommonUtils;
 import cn.edu.jxau.utils.postUtil;
 
 public class UserServlet extends BaseServlet {
+	private Logger logger = Logger.getLogger("jaxu");
 	private static final long serialVersionUID = 1L;
 	private UserService userService = new UserServiceImpl();
 	private static final String[] trueAnsewr = { "0", "023", "01", "01234", "01234", "012", "0123", "0123", "01234",
@@ -40,7 +45,22 @@ public class UserServlet extends BaseServlet {
 	 * 输入校验 1，创建一个Map,用来封装错误信息，其中key为表单字段名称，值为错误信息
 	 */
 	private Map<String, String> errors = new HashMap<String, String>();
-
+	@Override
+	public void init() throws ServletException {
+		logger.setLevel(Level.INFO); 
+		FileHandler fileHandler;
+		try {
+			fileHandler = new FileHandler("C:/testlog%g.log");
+			logger.addHandler(fileHandler);
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 	@SuppressWarnings("unused")
 	public String login(HttpServletRequest req, HttpServletResponse resp) {
 		// 封装表单数据到form中
