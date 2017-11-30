@@ -53,15 +53,29 @@
 		<div class="row" id="cir-answer">
 			<div>
 				<div class="row" id="re-exam"></div>
+			</div>
+		</div>
 	</section>
 	<footer>
 		<div class="footer-content">
-			&copy; 2005-2017 -<strong>蓝点工作室</strong>- 江西农业大学
+			&copy; 2005-2017 -<strong> <a
+			href="https://baike.baidu.com/item/%E6%B1%9F%E8%A5%BF%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2%E8%93%9D%E7%82%B9%E5%B7%A5%E4%BD%9C%E5%AE%A4/10848071?fr=aladdin">
+				蓝点工作室</a></strong>- 江西农业大学
 		</div>
 	</footer>
 </body>
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">  
+    var array = new Array();  
+    //console.info("info");  
+    <c:forEach items="${answer}" var="item" varStatus="status" >  
+        array.push("${item}");  
+        //获得值  
+        //alert("${item}");  
+        //获得其下标  
+    </c:forEach>  
+</script>  
 <script type="text/javascript" src="assets/js/user/result.js"></script>
 <script>
 	window.onload = showAnswers();

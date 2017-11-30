@@ -52,9 +52,9 @@
 				<hr id="hr-pass">
 				<div class="row">
 					<div class="login-button col-md-12 col-sm-12 col-xs-12">
-						<button type="submit">Login</button>
+						<button type="submit">Login</button><br/><br/>
+						<p id="errorSpan" style="color: red">${errorUser}</p>
 					</div>
-					<p id="errorSpan">${errorUser}</p>
 				</div>
 
 			</div>

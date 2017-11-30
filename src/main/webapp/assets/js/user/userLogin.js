@@ -4,7 +4,7 @@ var manageLogin = {
 	check: function(userName, password) {
 	    if (userName == null || userName == undefined || userName == " " || userName.length != 8) {
 	    	return false;
-	    }else if(password == null || password == undefined || password == " " || password.length != 6) {
+	    }else if(password == null || password == undefined || password == " ") {
 	    	return false;
 	    }
 	     return true;
@@ -28,7 +28,7 @@ var manageLogin = {
 		}
 		var password = $.trim($('#password').val());
 		if(!password) {
-			$("#errorSpan").html("用户名不能为空!");
+			$("#errorSpan").html("密码不能为空!");
 			return false;
 		} 
 		

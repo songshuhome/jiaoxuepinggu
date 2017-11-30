@@ -91,7 +91,7 @@ var pro = {
 			},
 			{
 				'question' : '22.学校在哪些方面体现了人才培养的中心地位？',
-				'answers' : [ 'A.领导重视，强化教学中心地位', 'B.政策引领，引导教师潜心教学', 'C.完善制度，确保培养目标达成', 'D.完善制度，确保培养目标达成', 'E.投入优先，保障教育教学条件'],
+				'answers' : [ 'A.领导重视，强化教学中心地位', 'B.政策引领，引导教师潜心教学', 'C.完善制度，确保培养目标达成', 'D.投入优先，保障教育教学条件'],
 			},
 			{
 				'question' : '23.学校教师队伍状况如何？',
@@ -202,17 +202,16 @@ var pro = {
 // 动态创建
 function showAnswers() {
 	var answer = $("#answer").val();
-	answer = answer.substring(0,answer.length-1);
+	answer = answer.substring(1,answer.length-1);
 	var strs = new Array(); // 定义一数组
 	strs = answer.split(","); // 字符分割
-	
-	
 	for (var i = 0; i < pro.questions.length; i++) {
 		var strsanswer = new Array(); // 定义一数组
 		strsanswer = strs[i].split("="); // 字符分割
 		
 		var userAnswer = strsanswer[1];
-		if (userAnswer == "true") {
+		var index = parseInt(strsanswer[0]);
+		if (array[i]  == "true") {
 			$("#cir-answer")
 					.append(
 							'<div class="col-xs-3">'

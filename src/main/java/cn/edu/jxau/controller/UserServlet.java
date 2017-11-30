@@ -2,6 +2,7 @@ package cn.edu.jxau.controller;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -21,17 +24,16 @@ import cn.edu.jxau.service.impl.UserServiceImpl;
 import cn.edu.jxau.utils.AjaxResultHander;
 import cn.edu.jxau.utils.BaseServlet;
 import cn.edu.jxau.utils.CommonUtils;
-import cn.edu.jxau.utils.JsonUtils;
 import cn.edu.jxau.utils.postUtil;
 
 public class UserServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService = new UserServiceImpl();
 	private static final String[] trueAnsewr = { "0", "023", "01", "01234", "01234", "012", "0123", "0123", "01234",
-			"012345", "1", "0", "0", "1", "0", "1", "0123", "012", "012", "012345", "012", "01234", "0", "0", "1", "02",
+			"012345", "1", "0", "0", "1", "0", "1", "0123", "012", "012", "012345", "012", "0123", "0", "0", "1", "02",
 			"0123", "12", "2", "0123", "012", "01", "012", "0123", "012", "0123", "023", "023", "02", "012", "03",
-			"013", "0123", "012", "023", "0123", "012" };
-	private static final String trueAnsewr1 = "A,ACD,AB,ABCDE,ABCDE,ABC,ABCD,ABCD,ABCDE,ABCDEF,B,A,A,B,A,B,ABCD,ABC,ABC,ABCDEF,ABC,ABCDE,A,A,B,AC,ABCD,BC,C,ABCD,ABC,AB,ABC,ABCD,ABC,ABCD,ACD,ACD,AC,ABC,AD,ABD,ABCD,ABC,ABD,ABCD,ABC";
+			"013", "0123", "012", "013", "0123", "0123" };
+	private static final String trueAnsewr1 = "A,ACD,AB,ABCDE,ABCDE,ABC,ABCD,ABCD,ABCDE,ABCDEF,B,A,A,B,A,B,ABCD,ABC,ABC,ABCDEF,ABC,ABCD,A,A,B,AC,ABCD,BC,C,ABCD,ABC,AB,ABC,ABCD,ABC,ABCD,ACD,ACD,AC,ABC,AD,ABD,ABCD,ABC,ABD,ABCD,ABCD";
 	private static final String TOKEN = "LD87er2sjsxk^ds";
 	private static final String SESSION_USER = "session_user";
 	/*
@@ -112,7 +114,7 @@ public class UserServlet extends BaseServlet {
 			String code = form.getStudentNumber().toString();
 			String passw = form.getPassword();
 			boolean result = code.matches("[0-9]+");
-			if (code.length() != 8 || result == false || passw.length() != 6) {
+			if (code.length() != 8 || result == false) {
 				req.setAttribute("errorUser", "用户名或密码错误!!");
 				return "f:/login.jsp";
 			}
@@ -188,7 +190,6 @@ public class UserServlet extends BaseServlet {
 			req.setAttribute("errorUser", "请先登录!");
 			return "f:/login.jsp";
 		}
-
 		// 答题次数
 		int frequency = form.getFrequency();
 		if (2 <= frequency) {
@@ -201,11 +202,11 @@ public class UserServlet extends BaseServlet {
 			req.setAttribute("quizError", "请重新测试！");
 			return "f:/quiz.jsp";
 		}
-
+		
 		// 记录正确的个数
 		float count = 0;
 		HashMap<String, String> answer = new HashMap<String, String>();
-
+		ArrayList<String> answer1 = new ArrayList<String>();
 		// 将答案变成数组
 		String[] arrAnswers = userAnswers.split(",");
 		if (trueAnsewr.length != arrAnswers.length) {
@@ -216,8 +217,10 @@ public class UserServlet extends BaseServlet {
 				if (trueAnsewr[i].equals(arrAnswers[i])) {
 					count++;
 					answer.put(i + "", "true");
+					answer1.add(i, "true");
 				} else {
 					answer.put(i + "", "false");
+					answer1.add(i, "false");
 				}
 			}
 		}
@@ -234,7 +237,7 @@ public class UserServlet extends BaseServlet {
 		try {
 			userService.submit(form);
 			req.getSession().setAttribute(SESSION_USER, form);
-			req.setAttribute("answer", answer);
+			req.setAttribute("answer", answer1);
 			req.setAttribute("trueAnsewr", trueAnsewr1);
 			return "f:/WEB-INF/pages/result.jsp";
 		} catch (ServiceException e) {
