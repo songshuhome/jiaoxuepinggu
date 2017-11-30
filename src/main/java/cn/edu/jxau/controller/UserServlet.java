@@ -47,7 +47,7 @@ public class UserServlet extends BaseServlet {
 	private Map<String, String> errors = new HashMap<String, String>();
 	@Override
 	public void init() throws ServletException {
-		logger.setLevel(Level.INFO); 
+		logger.setLevel(Level.WARNING); 
 		FileHandler fileHandler;
 		try {
 			fileHandler = new FileHandler("C:/testlog%g.log");
@@ -73,14 +73,17 @@ public class UserServlet extends BaseServlet {
 
 		if (stuNumber != null && 8 != stuNumber.toString().length()) {
 			errors.put("stuNumber", "用户名错误！");
+			logger.warning(stuNumber+":"+"用户名错误");
 		}
-
+		
 		// 密码验证
 		String password = form.getPassword();
 		if (password == null || password.trim().isEmpty()) {
 			errors.put("password", "密码不能为空！");
+			logger.warning(stuNumber+":"+"密码不能为空");
 		} else if (password.length() != 6) {
 			errors.put("password", "密码错误！");
+			logger.warning(stuNumber+":"+"密码错误");
 		}
 
 		// 判断是否存在错误信息
@@ -111,6 +114,7 @@ public class UserServlet extends BaseServlet {
 			req.setAttribute("form", form);
 			return "f:/admin.jsp";
 		}
+
 		return "f:/WEB-INF/pages/checkManage.jsp";
 	}
 
