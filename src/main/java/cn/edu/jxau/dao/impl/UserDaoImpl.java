@@ -15,7 +15,7 @@ import cn.edu.jxau.utils.TxQueryRunner;
 public class UserDaoImpl implements UserDao{
 
 	QueryRunner qr = new TxQueryRunner();
-	
+	// 查询不要用*，这样会降低效率
 	@Override
 	public User queryUser(User user) {
 		try {

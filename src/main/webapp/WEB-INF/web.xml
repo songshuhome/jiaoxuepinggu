@@ -24,7 +24,7 @@
         <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
         <init-param>
             <param-name>allow</param-name>
-            <param-value>127.0.0.1,192.168.1.1/24,182.84.249.244</param-value>
+            <param-value>127.0.0.1,192.168.1.1/24,182.84.249.244,182.85.233.97</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

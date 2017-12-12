@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
 /**
  * Ajax异步数据处理
- * @author longshu 2016年10月13日
+ * @author zclong
+ * 2017年12月12日
  */
 public class AjaxResultHander extends ResultHander {
 
