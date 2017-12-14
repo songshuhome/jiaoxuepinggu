@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="javax.servlet.jsp.jstl">
+    <CLASSES>
+      <root url="jar://C:/ylcto/项目开发包包/libs/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/jcommon-1.0.23.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/jfreechart-1.0.19.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/json.org.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/jstl-impl-1.2.2.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/servlet-api.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/SmartUpload.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/standard-1.1.2.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/webwork-2.2.7.jar!/" />
+      <root url="jar://C:/ylcto/项目开发包包/libs/xwork.jar!/" />
+      <root url="jar://C:/ylcto/mysql-connector-java-5.1.44.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://C:/ylcto/项目开发包包/libs/webwork-src-2.2.7.jar!/" />
+    </SOURCES>
+  </library>
+</component>
